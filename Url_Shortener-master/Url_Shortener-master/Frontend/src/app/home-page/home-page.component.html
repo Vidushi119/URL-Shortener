@@ -1,0 +1,53 @@
+<nb-layout>
+    <nb-layout-header>
+        <nb-layout-column>Ultimate URL Shortener</nb-layout-column>
+        <nb-layout-column>
+            <button nbButton outline status="primary" (click)="OnClickLogIn()" *ngIf="!loggedIn" style="position: absolute;top: 1rem;right: 1rem;">
+                Log In
+            </button>
+            <button nbButton outline status="danger" (click)="OnClickLogOut()" *ngIf="loggedIn" style="position: absolute;top: 1rem;right: 1rem;">
+                Log Out
+            </button>
+        </nb-layout-column>
+    </nb-layout-header>
+    <nb-layout-column>
+        <nb-list>
+            <nb-list-item>URL</nb-list-item>
+            <nb-list-item *ngFor="let url of urls">
+                <a href="{{url.url}}">{{url.url}}</a>
+            </nb-list-item>
+            <nb-list-item >
+                <button nbButton outline status="primary" (click)="AddNewUrl()">
+                    Add
+                </button>
+            </nb-list-item>
+        </nb-list>
+    </nb-layout-column>
+    <nb-layout-column>
+        <nb-list>
+            <nb-list-item> Short URL </nb-list-item>
+            <nb-list-item *ngFor="let url of urls">
+                <a href="http://localhost:8080/api/urls/short?alias={{url.alias}}">localhost:8080/api/urls/short/{{url.alias}}</a>
+            </nb-list-item>
+            <nb-list-item *ngIf="!urls.length">No URLs</nb-list-item>
+        </nb-list>
+    </nb-layout-column>
+    <nb-layout-column>
+        <nb-list> 
+            <nb-list-item> Created At </nb-list-item>
+            <nb-list-item *ngFor="let url of urls">
+                {{url.createdAt}}
+            </nb-list-item>
+        </nb-list>
+    </nb-layout-column>
+    <nb-layout-column>
+        <nb-list>
+            <nb-list-item>Visits</nb-list-item>
+            <nb-list-item *ngFor="let url of urls">
+                {{url.visits}}
+            </nb-list-item>
+        </nb-list>
+    </nb-layout-column>
+    
+    
+</nb-layout>

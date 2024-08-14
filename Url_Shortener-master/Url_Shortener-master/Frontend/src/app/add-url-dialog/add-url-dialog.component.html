@@ -1,0 +1,11 @@
+<nb-card>
+    <nb-card-header>Ultimate URL Shortener</nb-card-header>
+    <nb-card-body>
+        <input type="text" nbInput placeholder="Add new URL" [(ngModel)]="url.url">
+    </nb-card-body>
+    <nb-card-footer>
+        <button nbButton outline status="danger" (click)="OnAdd()">
+            Add
+        </button>
+    </nb-card-footer>
+</nb-card>
